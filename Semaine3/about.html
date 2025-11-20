@@ -209,6 +209,65 @@ details {
   }
 }
 
+
+
+/* Le conteneur de la vidéo occupe toute la largeur */
+.card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* Le titre */
+.card h2 {
+    font-size: 1.5rem;
+}
+
+/* Rendre la vidéo 100% responsive */
+.card video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Optionnel : pour éviter qu’un élément dépasse sur mobile */
+* {
+    max-width: 100%;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 10px;
+    }
+
+    .card h2 {
+        font-size: 1.3rem;
+    }
+}
+  
+
+.card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+}
+
+.card video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+   
+
   </style>
 </head>
 <body>
