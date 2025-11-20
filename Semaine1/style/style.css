@@ -203,3 +203,251 @@ footer p {
   background-color: #f4b400;
   color: #8b0000;
 }
+
+
+
+
+
+/* ------------------------------
+   VARIABLES & RESET
+--------------------------------*/
+:root {
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #222;
+  --muted: #6c757d;
+  --primary: #2b4b9b;
+  --primary-light: #3d62c2;
+  --border: #e2e6ea;
+  --radius: 12px;
+  --transition: .25s ease;
+  --max-width: 960px;
+  --shadow: 0 8px 20px rgba(0,0,0,.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+
+/* ------------------------------
+   LAYOUT GLOBAL
+--------------------------------*/
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.page-head {
+  margin: 20px 0 30px;
+}
+
+.page-head h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+
+/* ------------------------------
+   CARDS
+--------------------------------*/
+.card {
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+  border: 1px solid var(--border);
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.card .example {
+  background: #f1f4ff;
+  padding: 14px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  margin-top: 14px;
+}
+
+.card pre {
+  background: #1e1e1e;
+  color: #f7f7f7;
+  padding: 14px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: .9rem;
+  margin: 10px 0;
+}
+
+
+/* ------------------------------
+   LISTES
+--------------------------------*/
+ul, ol {
+  margin: 10px 0 10px 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+
+/* ------------------------------
+   DETAILS / SUMMARY
+--------------------------------*/
+details {
+  background: #f5f7fa;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-top: 15px;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+details[open] summary {
+  margin-bottom: 8px;
+}
+
+
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--primary);
+  color: #fff !important;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--primary-light);
+}
+
+
+/* ------------------------------
+   FORMS
+--------------------------------*/
+form {
+  margin-top: 12px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 6px;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 18px;
+}
+
+
+/* ------------------------------
+   TIP / INFO BOX
+--------------------------------*/
+.tip {
+  background: #e9f7ef;
+  border-left: 4px solid #2ecc71;
+  padding: 14px;
+  border-radius: var(--radius);
+  margin-top: 14px;
+}
+
+
+/* ------------------------------
+   GRID / FLEX UTILS
+--------------------------------*/
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 720px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ------------------------------
+   FOOTER
+--------------------------------*/
+footer {
+  margin: 40px 0 0;
+  font-size: .9rem;
+}
+
+
+/* ------------------------------
+   RESPONSIVE (Mobile First)
+--------------------------------*/
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .page-head h1 {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h2 {
+    font-size: 1.3rem;
+  }
+
+  pre {
+    font-size: .8rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Extra petit écrans */
+@media (max-width: 400px) {
+  html {
+    font-size: 15px;
+  }
+}
