@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guide complet — HTML, CSS & JavaScript (Le Gourmet)</title>
+
+  <!-- Exemple de connexion CSS externe : 
+       Ce lien suppose que vous avez un répertoire 'style' contenant 'style.css' 
+       par rapport à ce fichier HTML (même dossier parent). -->
+  <link rel="stylesheet" href="style/style.css">
+
+  <!-- Un peu de style interne pour organiser l'affichage de la page d'explication -->
+  <style>
+    :root{
+      --accent:#2c3e50;
+      --muted:#666;
+      --card:#fff;
+      --bg:#f6f8fa;
+      --success:#2ecc71;
+      --danger:#e74c3c;
+    }
+    html,body{height:100%;}
+    body{
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin:0;
+      background:var(--bg);
+      color:#222;
+      line-height:1.45;
+      padding:24px;
+    }
+    header.page-head{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:20px;
+    }
+    header.page-head h1{margin:0; color:var(--accent);}
+    .container{max-width:980px;margin:0 auto;}
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(20,30,40,0.06);
+      margin-bottom:18px;
+    }
+    h2{color:var(--accent); margin-top:0;}
+    pre{
+      background:#0f1720;color:#dfe; padding:12px; border-radius:6px; overflow:auto;
+    }
+    code{background:#eee;padding:2px 6px;border-radius:4px;}
+    .example { border-left:4px solid var(--accent); padding-left:12px; margin-top:10px;}
+    .tip{background:#fff3cd;border-left:6px solid #ffeeba;padding:10px;border-radius:6px;margin-top:12px;}
+    .ok{color:var(--success); font-weight:600;}
+    .error{color:var(--danger); font-weight:600;}
+    details{margin-top:8px;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    @media (max-width:760px){ .two-col{grid-template-columns:1fr;} }
+    .btn{display:inline-block;padding:8px 12px;background:var(--accent);color:white;border-radius:6px;text-decoration:none;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-head">
+      <div>
+        <h1>Guide détaillé — HTML, CSS & JavaScript</h1>
+        <div style="color:var(--muted)">Explications complètes et exemples concrets — fichiers, chemins, erreurs courantes</div>
+      </div>
+    li>Clarté : votre code est plus lisible et maintenable.</li>
+        </ul>
+      </div>
+
+      <details>
+        <summary><strong>Exemple concret — header + nav</strong></summary>
+        <pre>&lt;header&gt;
+  &lt;div class="logo"&gt;&lt;img src="images/logo.png" alt="Logo"&gt;&lt;/div&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="menu.html"&gt;Menu&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</pre>
+
+        <p>Note : toujours utiliser un <code>alt</code> significatif pour l'image du logo pour l'accessibilité.</p>
+      </details>
+    </section>
+
+    <!-- 3 CSS connection -->
+    <section class="card" id="css">
+      <h2>3 — Comment connecter le CSS au HTML (3 méthodes)</h2>
+
+      <p>Il existe trois façons d'ajouter du CSS :</p>
+
+      <ol>
+        <li><strong>Externe (fichier .css)</strong> — recommandé pour la maintenance.</li>
+        <li><strong>Interne (&lt;style&gt; dans &lt;head&gt;)</strong> — utile pour tests ou pages uniques.</li>
+        <li><strong>Inline (attribut style)</strong> — à éviter sauf exception.</li>
+      </ol>
+
+      <h3>3.1 CSS externe — exemple</h3>
+      <pre>&lt;link rel="stylesheet" href="style/style.css"&gt;</pre>
+      <div class="example">
+        <strong>Chemins courants :</strong>
+        <ul>
+          <li><code>href="style/style.css"</code> — si votre fichier HTML est à la racine et le CSS dans /style/</li>
+          <li><cod</header>
+
+    <!-- 1 Struct -->
+    <section class="card" id="structure">
+      <h2>1 — Structure de base d’un fichier HTML</h2>
+      <p>
+        Un document HTML standard commence ainsi :
+      </p>
+
+      <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Titre de la page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- contenu ici --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+      <div class="example">
+        <strong>Explications détaillées :</strong>
+        <ul>
+          <li><code>&lt;!DOCTYPE html&gt;</code> — indique au navigateur qu'il s'agit d'un document HTML5. Sans cela, le rendu peut tomber en <em>Quirks Mode</em> (comportement ancien).</li>
+          <li><code>&lt;html lang="fr"&gt;</code> — la langue est importante pour l'accessibilité (lecteurs d'écran), le SEO, et la correction orthographique dans certains éditeurs.</li>
+          <li><code>&lt;meta charset="UTF-8"&gt;</code> — définit l'encodage ; UTF-8 supporte tous les caractères (accents, symboles).</li>
+          <li><code>&lt;meta name="viewport" ...&gt;</code> — indispensable pour que la page soit responsive sur les mobiles.</li>
+        </ul>
+      </div>
+
+      <details>
+        <summary><strong>Exemples concrets d'erreurs liées à la structure</strong></summary>
+        <ul>
+          <li>Oublier <code>&lt;meta charset="UTF-8"&gt;</code> → caractères accentués affichés en "Ã©" etc.</li>
+          <li>Placer le <code>&lt;script&gt;</code> bloquant en haut du <code>&lt;head&gt;</code> sans <code>defer</code> → ralentit l'affichage.</li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- 2 Header Nav Section Footer -->
+    <section class="card" id="semantic">
+      <h2>2 — Balises sémantiques : header, nav, section, footer, article, aside</h2>
+
+      <p>Les balises sémantiques décrivent le rôle du contenu. Exemple :</p>
+
+      <pre>&lt;header&gt;...en-tête du site (logo, menu)&lt;/header&gt;
+&lt;nav&gt;...navigation principale&lt;/nav&gt;
+&lt;main&gt;
+  &lt;section&gt;...partie du contenu&lt;/section&gt;
+  &lt;article&gt;...article autonome&lt;/article&gt;
+  &lt;aside&gt;...contenu secondaire (barre latérale)&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;...bas de page&lt;/footer&gt;</pre>
+
+      <div class="example">
+        <strong>Pourquoi utiliser ces balises ?</strong>
+        <ul>
+          <li>Accessibilité : les lecteurs d'écran peuvent naviguer par régions (header, nav, main, footer).</li>
+          <li>SEO : les moteurs comprennent mieux la structure.</li>
+          <e>href="../css/main.css"</code> — remonte d’un dossier puis cherche /css/main.css</li>
+          <li><code>href="/assets/css/site.css"</code> — chemin absolu depuis la racine du site</li>
+        </ul>
+      </div>
+<section class="card">
+  <h2>suivez attentivement ces videos 1 jusqu'a 6 videos vous apprendrez comment travailler sur ce projet</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/1501cbb24e5c4dd5ac278574187e3180"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Vidéo 2</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/36acef16c60b46269b1c7eb3a7b55747"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Vidéo 3</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/1501cbb24e5c4dd5ac278574187e3180"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Vidéo 4</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/5c9f533a7b384a14adafa0b010a2bfaa"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Vidéo 5</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/3e8411996d434520adbc1accbd884ec9"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Vidéo 6</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe 
+      src="https://www.loom.com/embed/5efa93841d2e42a18123d005a3ba3930"
+      frameborder="0"
+      allowfullscreen
+      style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+
+      <h3>3.2 CSS interne — exemple</h3>
+      <pre>&lt;style&gt;
+header{ background:#123456; color:white; }
+&lt;/style&gt;</pre>
+      <p>Utile pour fragments rapides mais mélange contenu/présentation (moins propre).</p>
+
+      <h3>3.3 Inline — exemple</h3>
+      <pre>&lt;div style="color:red; padding:8px;"&gt;Texte&lt;/div&gt;</pre>
+      <p>Pratique pour tests ou styles dynamiques via JS, mais difficile à maintenir.</p>
+
+      <details>
+        <summary><strong>Exemples concrets de règles CSS pour header/nav</strong></summary>
+        <pre>/* style/style.css */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 32px;
+  background:#1e2a38;
+  color:#fff;
+}
+nav ul{ display:flex; gap:18px; list-style:none; }
+nav a{ color:#fff; text-decoration:none; }</pre>
+      </details>
+
+      <div class="tip">
+        <strong>Astuce :</strong> Utilisez <code>&lt;link rel="preload" as="style" href="...">&lt;link rel="stylesheet" href="..."></code>
+        si vous voulez précharger votre CSS critique sur les pages lentes — mais attention à la complexité.
+      </div>
+    </section>
+
+    <!-- 4 JS connection -->
+    <section class="card" id="js">
+      <h2>4 — Comment connecter JavaScript au HTML (avec exemples)</h2>
+
+      <p>Trois façons principales d'inclure JS :</p>
+      <ol>
+        <li><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> placé à la fin du <code>&lt;body&gt;</code> (traditionnel)</li>
+        <li><code>&lt;script src="script.js" defer&gt;&lt;/script&gt;</code> dans le <code>&lt;head&gt;</code> — script chargé et exécuté après le parsing du HTML</li>
+        <li><code>&lt;script src="script.js" async&gt;&lt;/script&gt;</code> dans le <code>&lt;head&gt;</code> — script exécuté dès qu'il est téléchargé (utile pour scripts tiers non dépendants)</li>
+      </ol>
+
+      <h3>Exemples :</h3>
+      <pre>
+// 1) Script en bas du body (simple et sûr)
+&lt;body&gt;
+  ...
+  &lt;script src="js/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+// 2) Script avec defer (idéal pour la plupart des cas)
+&lt;head&gt;
+  &lt;script src="js/main.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+// 3) Script async (pour analytics / pubs)
+&lt;head&gt;
+  &lt;script src="https://example.com/analytics.js" async&gt;&lt;/script&gt;
+&lt;/head&gt;
+      </pre>
+
+      <div class="example">
+        <strong>Quand utiliser quoi :</strong>
+        <ul>
+          <li><code>defer</code> — recommandé pour vos propres scripts qui manipulent le DOM (ils s'exécutent après le parsing).</li>
+          <li><code>async</code> — bon pour des scripts qui n'ont pas besoin du DOM (ex: analytics, publicités).</li>
+          <li>Placer le script en bas du <code>body</code> est simple et évite la plupart des problèmes de blocage.</li>
+        </ul>
+      </div>
+
+      <h3>Exemple concret : interagir avec un formulaire de réservation</h3>
+      <pre>&lt;!-- HTML --&gt;
+&lt;form id="res-form"&gt;
+  &lt;input id="name" name="name" required&gt;
+  &lt;input id="date" name="date" type="date" required&gt;
+  &lt;button type="submit"&gt;Réserver&lt;/button&gt;
+&lt;/form&gt;
+
+/* JS (js/main.js) */
+document.getElementById('res-form').addEventListener('submit', function(e){
+  e.preventDefault(); // empêche l'envoi par défaut
+  const name = document.getElementById('name').value;
+  const date = document.getElementById('date').value;
+  if(!name || !date){ alert('Veuillez remplir tous les champs'); return; }
+  // ici vous pourriez envoyer via fetch() vers un backend
+  alert('Réservation reçue pour ' + name + ' le ' + date);
+});</pre>
+
+      <div class="tip">
+        <strong>Bonnes pratiques JS :</strong> Toujours valider côté client <em>et</em> côté serveur. Utilisez <code>fetch()</code> pour les requêtes modernes (AJAX).
+      </div>
+    </section>
+
+    <!-- 5 Box model & layout -->
+    <section class="card" id="layout">
+      <h2>5 — Box model, margin, padding, border — exemples</h2>
+
+      <p>
+        Le modèle de boîte : chaque élément HTML est une "boîte" composée de :
+      </p>
+      <ul>
+        <li><strong>content</strong> — le contenu (texte, image)</li>
+        <li><strong>padding</strong> — espace interne</li>
+        <li><strong>border</strong> — bordure</li>
+        <li><strong>margin</strong> — espace externe (entre éléments)</li>
+      </ul>
+
+      <pre>/* Exemple : */
+.box {
+  width:300px;
+  padding:20px;
+  border:2px solid #ddd;
+  margin:16px;
+}</pre>
+
+      <div class="two-col">
+        <div>
+          <h4>Flexbox — mise en ligne d'éléments</h4>
+          <pre>/* CSS */
+.container{ display:flex; gap:12px; align-items:center; justify-content:space-between; }
+.item{ flex:1; }</pre>
+          <p>Flexbox est idéal pour les barres de navigation, header, cartes alignées sur une ligne.</p>
+        </div>
+        <div>
+          <h4>Grid — mise en grille</h4>
+          <pre>/* CSS */
+.grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }</pre>
+          <p>Grid est puissant pour les mises en page complexes (galeries, dashboards).</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Exemple concret : header responsive avec flexbox</summary>
+        <pre>header{ display:flex; align-items:center; justify-content:space-between; padding:12px 20px; }
+.logo{ display:flex; gap:12px; align-items:center; }
+nav ul{ display:flex; gap:16px; list-style:none; }</pre>
+      </details>
+    </section>
+
+    <!-- 6 Specificity & cascade -->
+    <section class="card" id="specificity">
+      <h2>6 — Spécificité CSS, cascade et ordre</h2>
+      <p>Quand plusieurs règles s'appliquent, le navigateur choisit celle qui a la spécificité la plus élevée. Ordre de priorité (simplifié) :</p>
+      <ol>
+        <li>Styles inline (ex : <code>style="..."</code>) — très spécifiques</li>
+        <li>ID selectors (<code>#monId</code>)</li>
+        <li>Class/attribute/pseudo-class selectors (<code>.maClasse</code> / <code>[type="text"]</code> / <code>:hover</code>)</li>
+        <li>Elements selectors (<code>header</code>, <code>p</code>)</li>
+        <li>Le dernier règle dans le fichier remporte en cas d'égalité</li>
+      </ol>
+
+      <pre>/* Exemple */
+p { color: black; }          /* faible spécificité */
+.text { color: red; }        /* classe */
+#special p { color: blue }   /* id + élément => plus spécifique</pre>
+
+      <div class="tip">
+        <strong>Astuce :</strong> évitez <code>!important</code> sauf cas extrême — il casse la maintenabilité.
+      </div>
+
+    </section>
+
+    <!-- 7 images -->
+    <section class="card" id="images">
+      <h2>7 — Images : src, alt, formats et chemins</h2>
+
+      <p>Image tag :</p>
+      <pre>&lt;img src="images/hero.jpg" alt="Photo du restaurant" width="800" height="450"&gt;</pre>
+
+      <div class="example">
+        <strong>Conseils pratiques :</strong>
+        <ul>
+          <li><code>alt</code> est essentiel pour l'accessibilité et SEO.</li>
+          <li>Définissez <code>width</code> et <code>height</code> ou utilisez CSS pour éviter le "layout shift".</li>
+          <li>Utilisez WebP/AVIF pour de meilleures performances lorsque possible, avec fallback JPEG/PNG si nécessaire.</li>
+        </ul>
+      </div>
+
+      <details>
+        <summary>Chemins relatifs vs absolus</summary>
+        <ul>
+          <li><strong>Relatif</strong> : <code>images/logo.png</code> (depuis le fichier HTML)</li>
+          <li><strong>Absolu</strong> : <code>/assets/images/logo.png</code> (depuis la racine du site)</li>
+        </ul>
+      </details>
+
+    </section>
+
+    <!-- 8 forms and accessibility -->
+    <section class="card" id="forms">
+      <h2>8 — Formulaires & accessibilité (ex: réservation)</h2>
+
+      <p>Formulaire accessible :</p>
+      <pre>&lt;form id="res-form"&gt;
+  &lt;label for="name"&gt;Nom complet&lt;/label&gt;
+  &lt;input id="name" name="name" type="text" required&gt;
+
+  &lt;label for="date"&gt;Date&lt;/label&gt;
+  &lt;input id="date" name="date" type="date" required&gt;
+
+  &lt;button type="submit"&gt;Réserver&lt;/button&gt;
+&lt;/form&gt;</pre>
+
+      <div class="example">
+        <strong>Explication :</strong>
+        <ul>
+          <li><code>&lt;label for="id"&gt;</code> lie le label au contrôle — facilite le focus et les lecteurs d'écran.</li>
+          <li><code>required</code> active la validation HTML5 basique côté client.</li>
+          <li>Utilisez aussi <code>aria-*</code> si nécessaire pour des widgets complexes.</li>
+        </ul>
+      </div>
+
+      <h4>Exemple de validation & envoi via JavaScript (fetch)</h4>
+      <pre>// JS (extrait)
+document.getElementById('res-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const data = { name: this.name.value, date: this.date.value };
+  if(!data.name){ alert('Nom requis'); return; }
+  // Exemple : envoi vers /api/reservations (backend requis)
+  const resp = await fetch('/api/reservations', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  });
+  if(resp.ok) alert('Réservation prise');
+});</pre>
+
+      <div class="tip">
+        <strong>Important :</strong> Toujours valider côté serveur aussi (sécurité & données fiables).
+      </div>
+    </section>
+
+    <!-- 9 file structure -->
+    <section class="card" id="structure-files">
+      <h2>9 — Organisation recommandée des fichiers (arborescence)</h2>
+      <pre>/
+├─ index.html
+├─ about.html
+├─ reservation.html
+├─ style/
+│  └─ style.css
+├─ js/
+│  └─ main.js
+└─ images/
+   └─ logo.png</pre>
+
+      <p>Gardez une structure claire : HTML à la racine (ou /pages/), CSS/JS/images dans des dossiers dédiés.</p>
+    </section>
+
+    <!-- 10 Debug -->
+    <section class="card" id="debug">
+      <h2>10 — Débogage & outils (DevTools)</h2>
+
+      <p>Utilisez les DevTools (F12) pour :</p>
+      <ul>
+        <li>Inspecter les éléments (HTML/CSS appliqué) — trouvez quelle règle CSS prend le dessus.</li>
+        <li>Console — erreurs JS (ReferenceError, TypeError).</li>
+        <li>Network — vérifier que vos fichiers (CSS/JS/images/fetch) sont bien chargés (200 OK).</li>
+        <li>Performance / Lighthouse — audits de performance, accessibilité, SEO.</li>
+      </ul>
+
+      <details>
+        <summary>Exemple concret d'erreur courante</summary>
+        <p>Si <code>style.css</code> ne se charge pas : vérifiez le chemin dans le <code>href</code>, regardez l'onglet Network (404 si fichier introuvable). Si le CSS n'est pas appliqué, vérifiez la spécificité, l'ordre des fichiers et si le cache bloque la mise à jour (Ctrl+F5).</p>
+      </details>
+    </section>
+
+    <!-- 11 Examples: full mini-page -->
+    <section class="card" id="mini-page">
+      <h2>11 — Exemple complet (mini-page) : HTML + CSS + JS</h2>
+
+      <p>Voici un exemple minimal mais complet d'une page "À propos" et comment tout se relie :</p>
+
+      <pre>&lt;!-- index.html (extrait) --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;À propos – Le Gourmet&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;div class=&quot;logo&quot;&gt;&lt;img src=&quot;images/gourmetlogo.png&quot; alt=&quot;Logo&quot;&gt;&lt;/div&gt;
+    &lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Accueil&lt;/a&gt;&lt;/li&gt;...&lt;/ul&gt;&lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;À propos de nous&lt;/h2&gt;
+    &lt;p&gt;Le Gourmet est...&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;footer&gt;&lt;p&gt;&amp;copy; 2025 Le Gourmet&lt;/p&gt;&lt;/footer&gt;
+
+  &lt;script src=&quot;js/main.js&quot; defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+      <p>Dans <code>style/style.css</code> : toutes les règles de style (header, nav, .hero, footer...).</p>
+
+      <p>Dans <code>js/main.js</code> : interaction (menu burger, validation formulaire, appels API).</p>
+
+      <details>
+        <summary>Exemple JS : activer un menu "burger"</summary>
+        <pre>// js/main.js
+document.querySelector('.burger').addEventListener('click', function(){
+  document.querySelector('nav ul').classList.toggle('open');
+});</pre>
+      </details>
+    </section>
+
+    <!-- 12 Accessibility -->
+    <section class="card" id="a11y">
+      <h2>12 — Accessibilité (A11Y) : points importants</h2>
+      <ul>
+        <li>Utiliser des balises sémantiques (<code>nav</code>, <code>main</code>, <code>header</code>, <code>footer</code>).</li>
+        <li>Toujours fournir <code>alt</code> pour les images.</li>
+        <li>Associer <code>&lt;label for=&quot;id&quot;&gt;</code> aux inputs.</li>
+        <li>Contrastes de couleurs suffisants (Lighthouse <code>contrast</code>).</li>
+        <li>Gérer la navigation clavier (focus visible, tabindex si nécessaire).</li>
+      </ul>
+    </section>
+
+    <!-- 13 Common mistakes -->
+    <section class="card" id="mistakes">
+      <h2>13 — Erreurs fréquentes & comment les corriger</h2>
+      <ul>
+        <li><strong>Fichier CSS non chargé</strong> : vérifier chemin, maj du cache, console Network (404).</li>
+        <li><strong>JS : null reference</strong> : element not found → script exécuté avant le DOM (utilisez <code>defer</code> ou placez le script en bas).</li>
+        <li><strong>Mauvaise utilisation des sélecteurs</strong> : .class vs #id vs tag — vérifier la spécificité.</li>
+        <li><strong>Images trop lourdes</strong> : compressez, utilisez WebP/AVIF, lazy-loading : <code>&lt;img loading=&quot;lazy&quot; ...&gt;</code>.</li>
+      </ul>
+    </section>
+
+    <!-- 14 Resources -->
+    <section class="card" id="resources">
+      <h2>14 — Ressources pour aller plus loin</h2>
+      <ul>
+        <li>MDN Web Docs — excellent pour HTML/CSS/JS (recherche "MDN HTML element").</li>
+        <li>CSS-Tricks — guides pratiques sur Flexbox / Grid.</li>
+        <li>Google Lighthouse — audit performance / accessibilité.</li>
+      </ul>
+      <p style="margin-top:12px;"><a class="btn" href="#" onclick="alert('Ressources locales : MDN, CSS-Tricks, Lighthouse'); return false">Voir les ressources</a></p>
+    </section>
+
+    <!-- small interactive demo: reservation form -->
+    <section class="card" id="live-demo">
+      <h2>Démo interactive simple : formulaire de réservation (JS embarqué)</h2>
+      <p>Remplis le mini-formulaire ci-dessous pour voir un exemple d'interaction. (Ce demo n'envoie rien au serveur.)</p>
+
+      <form id="demo-res-form" style="max-width:520px;">
+        <label for="demo-name">Nom :</label><br>
+        <input id="demo-name" name="name" type="text" placeholder="Jean Dupont" required style="padding:8px; width:100%; margin-bottom:10px;">
+        <label for="demo-date">Date :</label><br>
+        <input id="demo-date" name="date" type="date" required style="padding:8px; width:100%; margin-bottom:10px;">
+        <button type="submit" class="btn">Simuler réservation</button>
+      </form>
+
+      <div id="demo-message" style="margin-top:12px;"></div>
+
+      <script>
+        /* Script embarqué pour la démo */
+        (function(){
+          const form = document.getElementById('demo-res-form');
+          const msg = document.getElementById('demo-message');
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const date = form.date.value;
+            if(!name || !date){
+              msg.innerHTML = '<div class="error">Remplissez tous les champs.</div>';
+              return;
+            }
+            // Formatage de date simple pour l'affichage
+            const d = new Date(date);
+            const formatted = d.toLocaleDateString('fr-FR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+            msg.innerHTML = '<div style="padding:12px;background:#e9f7ef;border-left:4px solid '+ (typeof window !== "undefined" ? '#2ecc71' : '#2ecc71') +';border-radius:6px;">' +
+              '<strong>Succès :</strong> Réservation simulée pour <em>' + escapeHtml(name) + '</em> le <strong>' + formatted + '</strong>.</div>';
+            // Remettre le formulaire propre
+            form.reset();
+          });
+
+          // petite fonction d'échappement pour éviter injection dans cette demo
+          function escapeHtml(str){
+            return str.replace(/[&<>"']/g, function(m){
+              return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+            });
+          }
+        })();
+      </script>
+    </section>
+
+    <footer style="text-align:center;margin-top:18px;color:var(--muted);">
+      <small>Fichier d'explication — exemple pour <em>Le Gourmet</em>. Copiez-collez, modifiez, testez.</small>
+    </footer>
+  </div>
+</body>
+</html>
